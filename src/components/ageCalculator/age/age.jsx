@@ -5,6 +5,7 @@ const Age = (props) => {
   let monthAge = todayDate.getMonth() - submittedDate.getMonth();
   let dateAge = todayDate.getDate() - submittedDate.getDate();
 
+  //checks if submitted month and date has passed
   if (
     todayDate.getMonth() < submittedDate.getMonth() ||
     (todayDate.getMonth() === submittedDate.getMonth() &&
@@ -14,6 +15,7 @@ const Age = (props) => {
     monthAge += 12;
   }
 
+  //checks if submitted date has passed
   if (todayDate.getDate() < submittedDate.getDate()) {
     monthAge--;
     dateAge += 31;
