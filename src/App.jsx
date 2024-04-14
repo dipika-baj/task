@@ -1,10 +1,10 @@
 import "./App.css";
-import DateForm from "./components/dateForm/dateForm";
+import AgeCalculator from "./components/ageCalculator/ageCalculator";
 
 function App() {
   return (
     <>
-      <DateForm />
+      <AgeCalculator />
     </>
   );
 }
