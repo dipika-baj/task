@@ -22,26 +22,14 @@ const Age = (props) => {
   }
 
   return (
-    <div className="result">
-      <p>
-        <span>{yearAge}</span> Years
-      </p>
-      <p>
-        <span>{monthAge}</span> Months
-      </p>
-      <p>
-        <span>{dateAge}</span> Days
-      </p>
-      <p>
-        <span>{todayDate.getHours()}</span> Hours
-      </p>
-      <p>
-        <span>{todayDate.getMinutes()}</span> Minutes
-      </p>
-      <p>
-        <span>{todayDate.getSeconds()}</span> Seconds
-      </p>
-    </div>
+    <p className="result">
+      <span>{yearAge}</span> Years&nbsp;
+      <span>{monthAge}</span> Months&nbsp;
+      <span>{dateAge}</span> Days&nbsp;
+      <span>{todayDate.getHours()}</span> Hours&nbsp;
+      <span>{todayDate.getMinutes()}</span> Minutes&nbsp;
+      <span>{todayDate.getSeconds()}</span> Seconds&nbsp;
+    </p>
   );
 };
 export default Age;

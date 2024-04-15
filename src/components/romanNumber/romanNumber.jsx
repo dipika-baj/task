@@ -60,7 +60,7 @@ const RomanNumber = () => {
       </form>
       {!!result && (
         <div className="result">
-          <span>{result}</span>
+          Result : <span>{result}</span>
         </div>
       )}
     </Card>

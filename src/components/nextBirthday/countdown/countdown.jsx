@@ -1,5 +1,6 @@
 const CountDown = (props) => {
   const { submittedDate, todayDate } = props;
+
   let upcomingBirthday = new Date(submittedDate);
 
   upcomingBirthday.setFullYear(new Date().getFullYear());
@@ -19,7 +20,6 @@ const CountDown = (props) => {
     submittedDate.getMonth() > todayDate.getMonth() &&
     submittedDate.getDate() > todayDate.getDate()
   ) {
-    console.log("month and day have not passed ");
     if (remainingDay + 30 > 30) {
       remainingMonth = submittedDate.getMonth() - todayDate.getMonth();
     }
@@ -30,7 +30,6 @@ const CountDown = (props) => {
     submittedDate.getMonth() > todayDate.getMonth() &&
     submittedDate.getDate() <= todayDate.getDate()
   ) {
-    console.log("month has not passed but day has");
     remainingDay += 30;
   }
 
@@ -39,7 +38,6 @@ const CountDown = (props) => {
     submittedDate.getMonth() < todayDate.getMonth() &&
     submittedDate.getDate() > todayDate.getDate()
   ) {
-    console.log("month has  passed but day has not");
     remainingMonth = submittedDate.getMonth() - todayDate.getMonth() + 12;
   }
 
@@ -48,7 +46,6 @@ const CountDown = (props) => {
     submittedDate.getMonth() < todayDate.getMonth() &&
     submittedDate.getDate() <= todayDate.getDate()
   ) {
-    console.log("month and day both has passed");
     remainingMonth += 12;
     remainingDay += 30;
   }
@@ -58,7 +55,6 @@ const CountDown = (props) => {
     submittedDate.getMonth() === todayDate.getMonth() &&
     submittedDate.getDate() > todayDate.getDate()
   ) {
-    console.log("same month day has not passed");
     remainingMonth = submittedDate.getMonth() - todayDate.getMonth();
   }
 
@@ -67,27 +63,21 @@ const CountDown = (props) => {
     submittedDate.getMonth() === todayDate.getMonth() &&
     submittedDate.getDate() <= todayDate.getDate()
   ) {
-    console.log("same month day has passed");
     remainingMonth += 12;
     remainingDay += 30;
   }
 
   return (
-    <div className="result">
-      <p>
-        <span>{remainingMonth}</span> Months
+    <div>
+      <p className="result">
+        Your next Birthday is on {upcomingBirthday.toDateString()}
       </p>
-      <p>
-        <span>{remainingDay}</span> Days
-      </p>
-      <p>
-        <span>{remainingHour}</span> Hours
-      </p>
-      <p>
-        <span>{remainingMinute}</span> Minutes
-      </p>
-      <p>
-        <span>{remainingSecond}</span> Seconds
+      <p className="result">
+        <span>{remainingMonth}</span> Months&nbsp;
+        <span>{remainingDay}</span> Days&nbsp;
+        <span>{remainingHour}</span> Hours&nbsp;
+        <span>{remainingMinute}</span> Minutes&nbsp;
+        <span>{remainingSecond}</span> Seconds&nbsp;
       </p>
     </div>
   );
