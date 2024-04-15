@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Age from "./age/age";
-import DateForm from "./dateForm/dateForm";
-import "./ageCalculator.css";
+import DateForm from "../resuable/dateForm/dateForm";
+import Card from "../resuable/card/card";
 
 const AgeCalculator = () => {
   const [year, setYear] = useState();
@@ -9,7 +9,10 @@ const AgeCalculator = () => {
   const [date, setDate] = useState();
   const [submittedDate, setSubmittedDate] = useState();
   const [todayDate, setTodayDate] = useState(new Date());
-  const [isDateValid, setIsDateValid] = useState(false);
+  const [isDateValid, setIsDateValid] = useState({
+    status: false,
+    message: "",
+  });
 
   useEffect(() => {
     let timer = setInterval(() => {
@@ -26,27 +29,41 @@ const AgeCalculator = () => {
       let newDate = new Date(`${year}-${month}-${date}`);
 
       if (newDate > todayDate) {
-        setIsDateValid(false);
-        alert("Date is in future");
+        setIsDateValid({
+          status: false,
+          message: "Date is in future",
+        });
       } else {
-        setIsDateValid(true);
+        setIsDateValid({
+          status: true,
+          message: "",
+        });
         setSubmittedDate(newDate);
       }
+    } else {
+      setIsDateValid({
+        status: false,
+        message: "Please enter all fields",
+      });
     }
   };
 
   return (
-    <div className="age-calculator">
+    <Card>
+      <h2> Age Calculator</h2>
       <DateForm
+        month={month}
         setYear={setYear}
         setMonth={setMonth}
         setDate={setDate}
         onSubmit={onSubmit}
       />
-      {!!isDateValid && (
+      {!!isDateValid.status ? (
         <Age submittedDate={submittedDate} todayDate={todayDate} />
+      ) : (
+        <p className="error">{isDateValid.message}</p>
       )}
-    </div>
+    </Card>
   );
 };
 export default AgeCalculator;

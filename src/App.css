@@ -1,4 +1,95 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  font-family: sans-serif;
+}
+
+h2 {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.card {
+  width: 700px;
+  max-width: 90%;
+  margin: 20px auto;
+  background-color: #dfd7ef;
+  border-radius: 12px;
+  padding: 40px 50px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.date-input {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.input-row {
+  display: flex;
+  flex-direction: column;
+  max-width: 33.33%;
+  width: 150px;
+  gap: 5px;
+}
+
+input {
+  height: 70px;
+  border: 0;
+  border-radius: 7px;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid #a2a3bb;
+}
+
+button {
+  background-color: #b3b7ee;
+  padding: 20px 45px;
+  margin: 0 auto;
+  border: 1px solid #9395d3;
+  border-radius: 7px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+button:hover {
+  background-color: #9395d3;
+}
+
+.error {
+  font-size: 14px;
+  color: #ff0000;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.result {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.result span {
+  color: #7b65a7;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 425px) {
+  .result {
+    flex-direction: column;
+    align-items: center;
+  }
 }

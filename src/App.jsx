@@ -6,8 +6,8 @@ import RomanNumber from "./components/romanNumber/romanNumber";
 function App() {
   return (
     <>
-      <RomanNumber />
-      <AgeCalculator />
+      {/* <RomanNumber /> */}
+      {/* <AgeCalculator /> */}
       <NextBirthday />
     </>
   );

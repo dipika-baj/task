@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const DateForm = (props) => {
-  const { setYear, setMonth, setDate, onSubmit } = props;
+  const { month, setYear, setMonth, setDate, onSubmit } = props;
 
   const [yearError, setYearError] = useState(false);
   const [monthError, setMonthError] = useState(false);
@@ -26,7 +26,19 @@ const DateForm = (props) => {
   };
 
   const dateHandler = (e) => {
-    setDate(e.target.value);
+    const month30 = [4, 6, 9, 11];
+    const submittedMonth = parseInt(month);
+
+    if (
+      (submittedMonth === 2 && e.target.value > 28) ||
+      (month30.includes(submittedMonth) && e.target.value > 30) ||
+      e.target.value > 31
+    ) {
+      setDateError(true);
+    } else {
+      setDateError(false);
+      setDate(e.target.value);
+    }
   };
 
   return (
@@ -52,7 +64,7 @@ const DateForm = (props) => {
           {dateError && <span className="error">Must be a valid date</span>}
         </div>
       </div>
-      <input type="submit" value={"Calculate"} />
+      <button>Calculate</button>
     </form>
   );
 };

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Card from "../resuable/card/card";
 
 const RomanNumber = () => {
   const [romanNumberArray, setRomanNumberArray] = useState([]);
@@ -50,14 +51,19 @@ const RomanNumber = () => {
   };
 
   return (
-    <>
+    <Card>
+      <h2>Roman To Number</h2>
       <form onSubmit={submitHandler}>
-        <input type="text" onChange={inputHandler} />
-        {!isInputValid && <p>Invalid Input</p>}
-        <input type="submit" value={"Submit"} />
+        <input type="text" onChange={inputHandler} placeholder="Roman Number" />
+        {!isInputValid && <p className="error">Invalid Input</p>}
+        <button>Submit</button>
       </form>
-      {!!result && <p>{result}</p>}
-    </>
+      {!!result && (
+        <div className="result">
+          <span>{result}</span>
+        </div>
+      )}
+    </Card>
   );
 };
 export default RomanNumber;

@@ -22,7 +22,7 @@ const Age = (props) => {
   }
 
   return (
-    <div className="age">
+    <div className="result">
       <p>
         <span>{yearAge}</span> Years
       </p>

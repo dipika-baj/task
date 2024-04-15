@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import DateForm from "../nextBirthday/dateForm/dateForm";
-import "./nextBirthday.css";
+import DateForm from "../resuable/dateForm/dateForm";
 import CountDown from "./countdown/countdown";
+import Card from "../resuable/card/card";
 
 const NextBirthday = () => {
   const [year, setYear] = useState();
@@ -36,7 +36,8 @@ const NextBirthday = () => {
   };
 
   return (
-    <div className="next-birthday">
+    <Card>
+      <h2>Next Birthday</h2>
       <DateForm
         setYear={setYear}
         setMonth={setMonth}
@@ -46,7 +47,7 @@ const NextBirthday = () => {
       {isDateValid && (
         <CountDown submittedDate={submittedDate} todayDate={todayDate} />
       )}
-    </div>
+    </Card>
   );
 };
 export default NextBirthday;
