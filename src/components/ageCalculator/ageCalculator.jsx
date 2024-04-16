@@ -4,9 +4,6 @@ import DateForm from "../resuable/dateForm/dateForm";
 import Card from "../resuable/card/card";
 
 const AgeCalculator = () => {
-  const [year, setYear] = useState();
-  const [month, setMonth] = useState();
-  const [date, setDate] = useState();
   const [submittedDate, setSubmittedDate] = useState();
   const [todayDate, setTodayDate] = useState(new Date());
   const [isDateValid, setIsDateValid] = useState({
@@ -22,9 +19,7 @@ const AgeCalculator = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-
+  const validateDate = (year, month, date) => {
     if (year && month && date) {
       let newDate = new Date(`${year}-${month}-${date}`);
 
@@ -51,13 +46,7 @@ const AgeCalculator = () => {
   return (
     <Card>
       <h2> Age Calculator</h2>
-      <DateForm
-        month={month}
-        setYear={setYear}
-        setMonth={setMonth}
-        setDate={setDate}
-        onSubmit={onSubmit}
-      />
+      <DateForm validateDate={validateDate} />
       {!!isDateValid.status ? (
         <Age submittedDate={submittedDate} todayDate={todayDate} />
       ) : (

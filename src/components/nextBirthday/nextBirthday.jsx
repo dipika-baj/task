@@ -4,9 +4,6 @@ import CountDown from "./countdown/countdown";
 import Card from "../resuable/card/card";
 
 const NextBirthday = () => {
-  const [year, setYear] = useState();
-  const [month, setMonth] = useState();
-  const [date, setDate] = useState();
   const [submittedDate, setSubmittedDate] = useState();
   const [todayDate, setTodayDate] = useState(new Date());
   const [isDateValid, setIsDateValid] = useState(false);
@@ -19,9 +16,7 @@ const NextBirthday = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-
+  const validateDate = (year, month, date) => {
     if (year && month && date) {
       let newDate = new Date(`${year}-${month}-${date}`);
 
@@ -38,12 +33,7 @@ const NextBirthday = () => {
   return (
     <Card>
       <h2>Next Birthday</h2>
-      <DateForm
-        setYear={setYear}
-        setMonth={setMonth}
-        setDate={setDate}
-        onSubmit={onSubmit}
-      />
+      <DateForm validateDate={validateDate} />
       {isDateValid && (
         <CountDown submittedDate={submittedDate} todayDate={todayDate} />
       )}

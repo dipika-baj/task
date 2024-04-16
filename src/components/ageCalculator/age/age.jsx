@@ -18,7 +18,7 @@ const Age = (props) => {
   //checks if submitted date has passed
   if (todayDate.getDate() < submittedDate.getDate()) {
     monthAge--;
-    dateAge += 31;
+    dateAge += 30;
   }
 
   return (
