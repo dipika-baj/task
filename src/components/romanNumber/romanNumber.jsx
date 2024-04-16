@@ -56,7 +56,7 @@ const RomanNumber = () => {
       <form onSubmit={submitHandler}>
         <input type="text" onChange={inputHandler} placeholder="Roman Number" />
         {!isInputValid && <p className="error">Invalid Input</p>}
-        <button>Submit</button>
+        <button disabled={!isInputValid}>Submit</button>
       </form>
       {!!result && (
         <div className="result">

@@ -47,7 +47,7 @@ const AgeCalculator = () => {
     <Card>
       <h2> Age Calculator</h2>
       <DateForm validateDate={validateDate} />
-      {!!isDateValid.status ? (
+      {isDateValid.status ? (
         <Age submittedDate={submittedDate} todayDate={todayDate} />
       ) : (
         <p className="error">{isDateValid.message}</p>

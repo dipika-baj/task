@@ -30,15 +30,16 @@ const DateForm = (props) => {
   };
 
   const yearHandler = (e) => {
+    setYear(e.target.value);
     if (e.target.value > new Date().getFullYear()) {
       setYearError(true);
     } else {
       setYearError(false);
-      setYear(e.target.value);
     }
   };
 
   const monthHandler = (e) => {
+    setMonth(e.target.value);
     if (e.target.value > 12 || e.target.value < 1) {
       setMonthError(true);
     } else {
@@ -48,16 +49,15 @@ const DateForm = (props) => {
       } else {
         setDateError(false);
       }
-      setMonth(e.target.value);
     }
   };
 
   const dateHandler = (e) => {
+    setDate(e.target.value);
     if (!isDateValidForMonth(month, e.target.value) || e.target.value < 1) {
       setDateError(true);
     } else {
       setDateError(false);
-      setDate(e.target.value);
     }
   };
 
@@ -84,7 +84,7 @@ const DateForm = (props) => {
           {dateError && <span className="error">Must be a valid date</span>}
         </div>
       </div>
-      <button>Calculate</button>
+      <button disabled={yearError || monthError || dateError}>Calculate</button>
     </form>
   );
 };

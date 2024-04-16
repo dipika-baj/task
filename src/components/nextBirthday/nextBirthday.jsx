@@ -6,7 +6,10 @@ import Card from "../resuable/card/card";
 const NextBirthday = () => {
   const [submittedDate, setSubmittedDate] = useState();
   const [todayDate, setTodayDate] = useState(new Date());
-  const [isDateValid, setIsDateValid] = useState(false);
+  const [isDateValid, setIsDateValid] = useState({
+    status: false,
+    message: "",
+  });
 
   useEffect(() => {
     let timer = setInterval(() => {
@@ -21,12 +24,22 @@ const NextBirthday = () => {
       let newDate = new Date(`${year}-${month}-${date}`);
 
       if (newDate > todayDate) {
-        setIsDateValid(false);
-        alert("Date is in future");
+        setIsDateValid({
+          status: false,
+          message: "Date is in future",
+        });
       } else {
-        setIsDateValid(true);
+        setIsDateValid({
+          status: true,
+          message: "",
+        });
         setSubmittedDate(newDate);
       }
+    } else {
+      setIsDateValid({
+        status: false,
+        message: "Please enter all fields",
+      });
     }
   };
 
@@ -34,8 +47,10 @@ const NextBirthday = () => {
     <Card>
       <h2>Next Birthday</h2>
       <DateForm validateDate={validateDate} />
-      {isDateValid && (
+      {isDateValid.status ? (
         <CountDown submittedDate={submittedDate} todayDate={todayDate} />
+      ) : (
+        <p className="error">{isDateValid.message}</p>
       )}
     </Card>
   );
